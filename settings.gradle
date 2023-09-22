@@ -1,0 +1,10 @@
+rootProject.name = 'spear-event'
+//include 'connector'
+include 'event-core'
+include 'event-business'
+include 'event-connector:event-connector-kafka'
+include 'event-connector:event-connector-redis'
+include 'event-web'
+include 'examples:event-java'
+include 'event-sdk'
+

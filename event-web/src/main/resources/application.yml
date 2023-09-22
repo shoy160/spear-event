@@ -1,0 +1,28 @@
+spear:
+  timestamp: millisecond
+  enum-serializer: string
+mybatis-plus:
+  configuration:
+    default-enum-type-handler: cn.spear.event.business.dao.handler.MybatisEnumTypeHandler
+spring:
+  profiles:
+    active: dev,secret
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  datasource:
+    hikari:
+      pool-name: event-pool
+      connection-timeout: 10000
+      validation-timeout: 3000
+      idle-timeout: 30000
+      max-lifetime: 60000
+      minimum-idle: 5
+      maximum-pool-size: 10
+  redis:
+    connect-timeout: 1000
+    timeout: 1000
+logging:
+  level:
+    org.apache.kafka.clients: warn
+    org.apache.kafka.common: warn

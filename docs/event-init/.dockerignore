@@ -1,0 +1,6 @@
+dist
+./event-init-linux
+./event-init-mac
+./event-init.exe
+./README.md
+./build.sh

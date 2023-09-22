@@ -1,0 +1,76 @@
+server:
+  port: 8081
+spring:
+  #  flyway.baseline-version: 0
+  flyway:
+    validate-on-migrate: false
+    baseline-version: 0
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://10.0.0.101:30131/spear-event?currentSchema=public
+  #      driver-class-name: com.mysql.cj.jdbc.Driver
+  #      url: jdbc:mysql://10.0.0.101:30116/spear-event?useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+  redis:
+    # 单例模式
+    host: 10.0.0.101
+    port: 30178
+    database: 5
+#    host: 127.0.0.1
+#    port: 6379
+#    database: 9
+#    # 哨兵模式
+#    sentinel:
+#      master: xxx
+#      nodes:
+#        - xxx:6379
+#        - xxx:6380
+#    # 集群模式
+#    cluster:
+#      nodes:
+#        - xxx:6379
+#        - xxx:6380
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    cn.spear.event.connector.kafka: debug
+spear:
+  manage-token: Bearer Spear-Event
+  enable-history: true
+  enable-client: false
+  enable-auth: true
+  auth-config:
+    user-pool-id: 637f598893eacae2b38af463
+    app-id: 637f598997635b2bdb62c440
+    app-secret: 503b74c6f2baccc9f2fa0b8f4a5a836f
+    domain: https://afyu8co1oooq-demo.authing.cn
+    redirect-uri: http://localhost:8080
+    use-implicit-mode: true
+  connector:
+    kafka:
+      namesrv-addr: 10.0.0.101:30192
+      max-partitions: 5
+      delay:
+        enable: false
+        partitions: 1
+        retention: 60
+        basic-minutes: 1,2,5,10,30,60
+    redis:
+      delay:
+        enable: false
+        max-threads: 2
+        partitions: 1
+        delay-topic: __event_redis_delay01
+        username: event_redis_delay01
+        password: event_delay01@redis
+        consumer-group: __event_redis_delay01
+        time-accuracy: 500
+        fixed-rate: 200
+        delay-queue-key: "authing-event:delay:event_queue"
+  event:
+    schema-template: "description: {name} \npublish: \n  summary: {name} \n  message: \n    name: {name} \n    title: {name} \n    contentType: application/json \n    payload: \n      type: object \n      properties: {} \n"
+    custom-app:
+      prefix: custom_
+      length: 5
+      timeout: 1500

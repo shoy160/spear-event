@@ -1,0 +1,36 @@
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.bmuschko.docker-spring-boot-application'
+//apply plugin: 'org.flywaydb.flyway:9.8.1'
+
+dependencies {
+    implementation project(":event-core")
+    implementation project(":event-business")
+    implementation project(":event-connector:event-connector-kafka")
+    implementation project(":event-connector:event-connector-redis")
+    api "com.baomidou:mybatis-plus"
+    implementation "io.cloudevents:cloudevents-http-basic"
+    implementation "io.cloudevents:cloudevents-spring"
+    implementation("org.postgresql:postgresql")
+    implementation("mysql:mysql-connector-java")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("com.github.xiaoymin:knife4j-spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.flywaydb:flyway-core")
+    implementation("com.nimbusds:nimbus-jose-jwt:9.23")
+    testImplementation("org.yaml:snakeyaml:1.26")
+    testImplementation("org.apache.poi:poi-ooxml:5.2.2")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+docker {
+    springBootApplication {
+        baseImage = 'openjdk:8-alpine'
+        ports = [8080]
+        images = ['authing-event:1.0.0', 'authing-event:latest']
+        jvmArgs = ['-Dspring.profiles.active=test', '-Xmx2048m']
+    }
+}

@@ -1,0 +1,8 @@
+dependencies {
+    api "io.cloudevents:cloudevents-core"
+    api "ch.qos.logback:logback-classic"
+    api "io.swagger:swagger-annotations:1.6.8"
+    api "org.springframework:spring-core"
+    api "org.springframework:spring-context"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+}

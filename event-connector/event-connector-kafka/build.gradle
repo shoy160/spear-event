@@ -1,0 +1,10 @@
+dependencies {
+    implementation(project(":event-core"))
+    implementation 'org.apache.kafka:kafka-clients'
+    implementation "io.cloudevents:cloudevents-kafka"
+    implementation "org.springframework.boot:spring-boot"
+}
+
+test {
+    useJUnitPlatform()
+}

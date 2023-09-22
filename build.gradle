@@ -1,0 +1,100 @@
+buildscript {
+    ext {
+        springBootVersion = '2.7.9'
+        springDependencyVersion = '1.0.15.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            url 'https://maven.aliyun.com/nexus/content/groups/public/'
+        }
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath 'com.bmuschko:gradle-docker-plugin:6.7.0'
+    }
+}
+
+allprojects {
+    group 'cn.spear.event'
+    version '1.0-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: "idea"
+    apply plugin: "java"
+    apply plugin: "java-library"
+    apply plugin: "org.springframework.boot"
+    apply plugin: "io.spring.dependency-management"
+//    apply plugin: "org.flywaydb.flyway"
+    // 指定JDK版本
+    sourceCompatibility = 11
+    targetCompatibility = 11
+    // 指定编码格式
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+    repositories {
+        mavenLocal()
+        maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+    }
+    ext {
+        //依赖版本
+        logbackVersion = "1.2.11"
+        jacksonVersion = "2.13.4.2"
+        springBootVersion = "2.7.9"
+        cloudEventVersion = "2.4.0"
+        pgsqlConnectorVersion = "42.5.0"
+        mysqlConnectorVersion = "8.0.32"
+        mybatisPlusStarterVersion = "3.5.2"
+        kafkaClientVersion = "3.3.1"
+        knife4jVersion = "3.0.3"
+        hutoolVersion = "5.8.9"
+        lombokVersion = "1.18.24"
+//        flyway 8.0 之后不支持 MySQL5，且 MySQL 是独立包：flyway-mysql
+        flywayVersion = '7.15.0'
+    }
+    dependencies {
+        implementation("cn.hutool:hutool-core")
+        compileOnly("org.projectlombok:lombok")
+        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+        annotationProcessor("org.projectlombok:lombok")
+        testCompileOnly("org.projectlombok:lombok")
+        testAnnotationProcessor("org.projectlombok:lombok")
+    }
+    dependencyManagement {
+        dependencies {
+            dependency "cn.hutool:hutool-core:${hutoolVersion}"
+            dependency "org.projectlombok:lombok:${lombokVersion}"
+            dependency "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+            dependency "ch.qos.logback:logback-classic:${logbackVersion}"
+
+            dependency "org.springframework.boot:spring-boot:${springBootVersion}"
+            dependency "org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}"
+            dependency "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
+            dependency "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+            dependency "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+
+            dependency "com.baomidou:mybatis-plus:${mybatisPlusStarterVersion}"
+            dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusStarterVersion}"
+            dependency "io.cloudevents:cloudevents-core:${cloudEventVersion}"
+            dependency "io.cloudevents:cloudevents-spring:${cloudEventVersion}"
+            dependency "io.cloudevents:cloudevents-kafka:${cloudEventVersion}"
+            dependency "io.cloudevents:cloudevents-http-basic:${cloudEventVersion}"
+            dependency "io.cloudevents:cloudevents-json-jackson:${cloudEventVersion}"
+
+            dependency "org.flywaydb:flyway-core:${flywayVersion}"
+            dependency "org.postgresql:postgresql:${pgsqlConnectorVersion}"
+            dependency "mysql:mysql-connector-java:${mysqlConnectorVersion}"
+            dependency "org.apache.kafka:kafka-clients:${kafkaClientVersion}"
+
+            dependency "com.github.xiaoymin:knife4j-spring-boot-starter:${knife4jVersion}"
+        }
+    }
+}
+

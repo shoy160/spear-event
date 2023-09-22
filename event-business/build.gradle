@@ -1,0 +1,17 @@
+dependencies {
+    api "javax.validation:validation-api:2.0.1.Final"
+    api "io.swagger:swagger-annotations:1.6.8"
+    implementation project(":event-core")
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "org.springframework.boot:spring-boot-starter-aop"
+    implementation "org.springframework.boot:spring-boot-starter-data-redis"
+    implementation "io.cloudevents:cloudevents-json-jackson:${cloudEventVersion}"
+    implementation("com.baomidou:mybatis-plus-boot-starter")
+    implementation("org.apache.poi:poi-ooxml:5.2.2")
+    implementation("org.apache.kafka:kafka-streams")
+    implementation("org.springframework.kafka:spring-kafka")
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,7 @@
+spear:
+  event:
+    host: http://localhost:8080
+    token: "123"
+  datasource:
+   url: postgres://user:password@localhost:5432/spear-event?sslmode=disable
+   esists-sql: SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema='public' AND table_name = 'event')
