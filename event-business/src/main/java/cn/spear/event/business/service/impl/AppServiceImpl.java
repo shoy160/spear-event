@@ -193,7 +193,7 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, AppPO> implements App
         LambdaQueryChainWrapper<AppPO> wrapper = lambdaQuery()
                 .eq(StrUtil.isNotBlank(code), AppPO::getCode, code);
         if (Objects.nonNull(type) || StrUtil.isNotBlank(privateId)) {
-            wrapper.eq(AppPO::getCode, "authing")
+            wrapper.eq(AppPO::getCode, "spear")
                     .or(t -> t.eq(Objects.nonNull(type), AppPO::getType, type)
                             .eq(StrUtil.isNotBlank(privateId), AppPO::getPrivateId, privateId));
         }

@@ -1,15 +1,12 @@
 package cn.spear.event.example;
 
-import cn.authing.event.core.utils.JsonUtils;
+import cn.spear.event.core.utils.JsonUtils;
 import io.cloudevents.CloudEvent;
 import io.cloudevents.kafka.CloudEventDeserializer;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.config.LogLevelConfig;
 import org.apache.kafka.common.config.SaslConfigs;
 import org.apache.kafka.common.errors.WakeupException;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -25,14 +22,14 @@ import java.util.Properties;
  * @author luoyong
  * @date 2022/11/21
  */
-public class eventReceiver {
+public class EventReceiver {
 
     @Test
     public void listenerTest() {
         // 事件中台提供参数
         String eventServers = "chengdu.y2b.site:18083";
         String eventTopic = "user.created";
-        String eventGroup = "authing-server";
+        String eventGroup = "spear-server";
         String clientId = "4168053424263168";
         String clientSecret = "c9db25d9b9f548968d06d7a7f56cd3ea";
 

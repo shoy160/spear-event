@@ -86,7 +86,7 @@ public interface Constants {
 
     String HEADER_PRIVATE_ID = "ce-privateid";
     String QUERY_PRIVATE_ID = "privateId";
-    String AUTHING_PRIVATE_ID = "x-spear-private-id";
+    String SPEAR_PRIVATE_ID = "x-spear-private-id";
 
     String SESSION_TOKEN = "context-token";
 

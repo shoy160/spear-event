@@ -146,7 +146,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             if (StrUtil.isNotBlank(privateId)) {
                 return privateId;
             }
-            privateId = EventWebContext.getRequestHeader(Constants.AUTHING_PRIVATE_ID);
+            privateId = EventWebContext.getRequestHeader(Constants.SPEAR_PRIVATE_ID);
         }
         return privateId;
     }

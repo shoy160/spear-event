@@ -30,7 +30,7 @@ docker {
     springBootApplication {
         baseImage = 'openjdk:8-alpine'
         ports = [8080]
-        images = ['authing-event:1.0.0', 'authing-event:latest']
+        images = ['spear-event:1.0.0', 'spear-event:latest']
         jvmArgs = ['-Dspring.profiles.active=test', '-Xmx2048m']
     }
 }

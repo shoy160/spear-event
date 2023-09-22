@@ -466,8 +466,8 @@ public class EventServiceImpl extends ServiceImpl<EventMapper, EventPO> implemen
                 throw new BusinessException("私有事件必须有私有 ID");
             }
             AppDTO customApp;
-            if (StrUtil.isBlank(appCode) && model.getCode().startsWith("authing.")) {
-                appCode = "authing";
+            if (StrUtil.isBlank(appCode) && model.getCode().startsWith("spear.")) {
+                appCode = "spear";
             }
             if (StrUtil.isNotBlank(appCode)) {
                 customApp = appService.findByCode(appCode);

@@ -51,7 +51,7 @@ public class AuthingClient {
             String url = URLUtil.completeUrl(authConfig.getDomain(), "/api/v3/get-profile");
             HttpRequest request = new HttpRequest(url, HttpMethod.GET);
             request.setHeader("Authorization", "Bearer ".concat(accessToken));
-            request.setHeader("x-authing-app-id", authConfig.getAppId());
+            request.setHeader("x-spear-app-id", authConfig.getAppId());
             HttpResponse resp = HttpHelper.request(request);
             if (resp.isSuccessCode()) {
                 byte[] body = resp.getBody();

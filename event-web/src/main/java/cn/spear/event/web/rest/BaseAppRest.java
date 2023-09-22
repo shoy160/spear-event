@@ -36,7 +36,7 @@ public class BaseAppRest extends BaseRest {
             if (StrUtil.isNotBlank(privateId)) {
                 return privateId;
             }
-            privateId = EventWebContext.getRequestHeader(Constants.AUTHING_PRIVATE_ID);
+            privateId = EventWebContext.getRequestHeader(Constants.SPEAR_PRIVATE_ID);
         }
         return privateId;
     }

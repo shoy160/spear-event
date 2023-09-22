@@ -76,7 +76,7 @@ public class BaseProperties {
          */
         private String appSecret;
         /**
-         * Authing Domain
+         * spear Domain
          */
         private String domain;
         /**

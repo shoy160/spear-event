@@ -40,13 +40,6 @@ spear:
   enable-history: true
   enable-client: false
   enable-auth: true
-  auth-config:
-    user-pool-id: 637f598893eacae2b38af463
-    app-id: 637f598997635b2bdb62c440
-    app-secret: 503b74c6f2baccc9f2fa0b8f4a5a836f
-    domain: https://afyu8co1oooq-demo.authing.cn
-    redirect-uri: http://localhost:8080
-    use-implicit-mode: true
   connector:
     kafka:
       namesrv-addr: 10.0.0.101:30192
@@ -67,7 +60,7 @@ spear:
         consumer-group: __event_redis_delay01
         time-accuracy: 500
         fixed-rate: 200
-        delay-queue-key: "authing-event:delay:event_queue"
+        delay-queue-key: "spear-event:delay:event_queue"
   event:
     schema-template: "description: {name} \npublish: \n  summary: {name} \n  message: \n    name: {name} \n    title: {name} \n    contentType: application/json \n    payload: \n      type: object \n      properties: {} \n"
     custom-app:

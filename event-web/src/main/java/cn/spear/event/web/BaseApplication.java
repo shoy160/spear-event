@@ -70,7 +70,7 @@ public class BaseApplication extends SpringApplication {
         Properties props = new Properties();
         props.setProperty("spring.application.name", this.appName);
         props.setProperty("spring.messages.encoding", "UTF-8");
-        props.setProperty("authing.version", Constants.VERSION);
+        props.setProperty("spear.version", Constants.VERSION);
         //优雅停机
         props.setProperty("server.shutdown", "graceful");
         props.setProperty("spring.lifecycle.timeout-per-shutdown-phase", "20s");

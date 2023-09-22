@@ -1,13 +1,11 @@
 package cn.spear.event.example;
 
-import cn.authing.event.core.utils.JsonUtils;
 import cn.hutool.core.codec.Base64;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.IdUtil;
+import cn.spear.event.core.utils.JsonUtils;
 import io.cloudevents.CloudEvent;
 import io.cloudevents.core.message.MessageReader;
-import io.cloudevents.core.message.MessageWriter;
 import io.cloudevents.core.v1.CloudEventBuilder;
 import io.cloudevents.http.HttpMessageFactory;
 import io.cloudevents.http.impl.HttpMessageWriter;
@@ -30,7 +28,7 @@ import java.util.Map;
  * @author shay
  * @date 2022/11/19
  **/
-public class eventSender {
+public class EventSender {
 
     @Test
     public void send() throws IOException {
